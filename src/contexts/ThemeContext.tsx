@@ -1,7 +1,6 @@
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ConfigProvider, theme } from 'antd';
-import { BrandConfig, defaultTheme } from '../types/theme';
+import { BrandConfig, defaultTheme, themePresets } from '../types/theme';
 
 interface ThemeContextType {
   brandConfig: BrandConfig;

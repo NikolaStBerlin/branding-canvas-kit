@@ -3,6 +3,7 @@ import React from 'react';
 import { Layout, Button, Space, Avatar, Dropdown, MenuProps } from 'antd';
 import { UserOutlined, SettingOutlined, LogoutOutlined, BellOutlined } from '@ant-design/icons';
 import { useTheme } from '../../contexts/ThemeContext';
+import QuickThemeToggle from './QuickThemeToggle';
 
 const { Header: AntHeader } = Layout;
 
@@ -58,6 +59,8 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle }) => {
       </div>
 
       <Space>
+        <QuickThemeToggle />
+        
         <Button 
           type="text" 
           icon={<BellOutlined />} 
