@@ -23,7 +23,8 @@ interface SidebarProps {
 type MenuItem = Required<MenuProps>['items'][number];
 
 const Sidebar: React.FC<SidebarProps> = ({ collapsed, selectedKey, onMenuSelect }) => {
-  const { brandConfig } = useTheme();
+  // Don't need brandConfig for styles now, everything is via CSS vars
+  // const { brandConfig } = useTheme();
 
   const menuItems: MenuItem[] = [
     {
@@ -66,10 +67,10 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, selectedKey, onMenuSelect 
   return (
     <Sider
       collapsed={collapsed}
-      width={brandConfig.sidebarWidth}
+      width="var(--sidebar-width)"
       style={{
-        background: brandConfig.backgroundColor,
-        borderRight: `1px solid ${brandConfig.secondaryColor}`,
+        background: 'var(--brand-background)',
+        borderRight: '1px solid var(--brand-secondary)',
         boxShadow: '2px 0 8px rgba(0,0,0,0.05)',
       }}
       className="sidebar-custom"
@@ -81,7 +82,8 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, selectedKey, onMenuSelect 
           height: '100%',
           borderRight: 0,
           background: 'transparent',
-          fontFamily: brandConfig.fontFamily,
+          fontFamily: 'var(--brand-font)',
+          color: 'var(--brand-text)',
         }}
         onClick={({ key }) => onMenuSelect(key)}
         items={menuItems}

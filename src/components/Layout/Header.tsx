@@ -37,22 +37,22 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle }) => {
   ];
 
   return (
-    <AntHeader 
+    <AntHeader
       className="header-custom"
       style={{
-        background: `linear-gradient(135deg, ${brandConfig.primaryColor} 0%, ${brandConfig.accentColor} 100%)`,
+        background: 'linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent) 100%)',
         padding: '0 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        height: brandConfig.headerHeight,
+        height: 'var(--header-height)',
       }}
     >
       <div className="flex items-center space-x-4">
-        <div 
+        <div
           className="text-white font-bold text-xl"
-          style={{ fontFamily: brandConfig.fontFamily }}
+          style={{ fontFamily: 'var(--brand-font)' }}
         >
           {brandConfig.name}
         </div>
@@ -60,17 +60,17 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle }) => {
 
       <Space>
         <QuickThemeToggle />
-        
-        <Button 
-          type="text" 
-          icon={<BellOutlined />} 
+
+        <Button
+          type="text"
+          icon={<BellOutlined />}
           className="text-white hover:bg-white/20"
           size="large"
         />
-        
+
         {onThemeToggle && (
-          <Button 
-            type="text" 
+          <Button
+            type="text"
             onClick={onThemeToggle}
             className="text-white hover:bg-white/20"
             size="large"
@@ -79,15 +79,15 @@ const Header: React.FC<HeaderProps> = ({ onThemeToggle }) => {
           </Button>
         )}
 
-        <Dropdown 
-          menu={{ items: userMenuItems }} 
+        <Dropdown
+          menu={{ items: userMenuItems }}
           placement="bottomRight"
           trigger={['click']}
         >
-          <Avatar 
-            icon={<UserOutlined />} 
+          <Avatar
+            icon={<UserOutlined />}
             className="cursor-pointer hover:scale-110 transition-transform"
-            style={{ backgroundColor: brandConfig.accentColor }}
+            style={{ backgroundColor: 'var(--brand-accent)' }}
           />
         </Dropdown>
       </Space>

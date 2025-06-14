@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ConfigProvider, theme } from 'antd';
 import { BrandConfig, defaultTheme, themePresets } from '../types/theme';
@@ -24,9 +25,9 @@ interface ThemeProviderProps {
   initialConfig?: BrandConfig;
 }
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ 
-  children, 
-  initialConfig = defaultTheme 
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({
+  children,
+  initialConfig = defaultTheme,
 }) => {
   const [brandConfig, setBrandConfigState] = useState<BrandConfig>(initialConfig);
 
@@ -75,7 +76,17 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
       resetToDefault,
     }}>
       <ConfigProvider theme={antdTheme}>
-        {children}
+        <div
+          style={{
+            // Provide theme class to enable CSS var usage globally
+            fontFamily: 'var(--brand-font)',
+            background: 'var(--brand-background)',
+            color: 'var(--brand-text)',
+            minHeight: '100vh',
+          }}
+        >
+          {children}
+        </div>
       </ConfigProvider>
     </ThemeContext.Provider>
   );

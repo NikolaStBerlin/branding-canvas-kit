@@ -1,21 +1,17 @@
-
 import React from 'react';
 import { Row, Col, Card, Table, Tag, Progress, Space, Button } from 'antd';
-import { 
-  UserOutlined, 
-  ShoppingCartOutlined, 
-  DollarOutlined, 
+import {
+  UserOutlined,
+  ShoppingCartOutlined,
+  DollarOutlined,
   BarChartOutlined,
   EyeOutlined,
   EditOutlined,
-  DeleteOutlined 
+  DeleteOutlined,
 } from '@ant-design/icons';
 import StatCard from './StatCard';
-import { useTheme } from '../../contexts/ThemeContext';
 
 const DashboardContent: React.FC = () => {
-  const { brandConfig } = useTheme();
-
   const tableData = [
     {
       key: '1',
@@ -98,7 +94,7 @@ const DashboardContent: React.FC = () => {
             prefix={<UserOutlined />}
             trend="up"
             trendValue={12}
-            color={brandConfig.primaryColor}
+            color="var(--brand-primary)"
           />
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -108,7 +104,7 @@ const DashboardContent: React.FC = () => {
             prefix={<ShoppingCartOutlined />}
             trend="up"
             trendValue={8}
-            color={brandConfig.accentColor}
+            color="var(--brand-accent)"
           />
         </Col>
         <Col xs={24} sm={12} lg={6}>
@@ -137,11 +133,11 @@ const DashboardContent: React.FC = () => {
       {/* Progress Cards */}
       <Row gutter={[16, 16]}>
         <Col xs={24} lg={12}>
-          <Card 
-            title="Project Progress" 
+          <Card
+            title="Project Progress"
             bordered={false}
             className="hover:shadow-lg transition-shadow duration-300"
-            style={{ borderRadius: brandConfig.borderRadius }}
+            style={{ borderRadius: 'var(--brand-radius)' }}
           >
             <div className="space-y-4">
               <div>
@@ -149,14 +145,14 @@ const DashboardContent: React.FC = () => {
                   <span>Website Redesign</span>
                   <span>75%</span>
                 </div>
-                <Progress percent={75} strokeColor={brandConfig.primaryColor} />
+                <Progress percent={75} strokeColor="var(--brand-primary)" />
               </div>
               <div>
                 <div className="flex justify-between mb-2">
                   <span>Mobile App</span>
                   <span>60%</span>
                 </div>
-                <Progress percent={60} strokeColor={brandConfig.accentColor} />
+                <Progress percent={60} strokeColor="var(--brand-accent)" />
               </div>
               <div>
                 <div className="flex justify-between mb-2">
@@ -170,25 +166,25 @@ const DashboardContent: React.FC = () => {
         </Col>
         
         <Col xs={24} lg={12}>
-          <Card 
-            title="Recent Activity" 
+          <Card
+            title="Recent Activity"
             bordered={false}
             className="hover:shadow-lg transition-shadow duration-300"
-            style={{ borderRadius: brandConfig.borderRadius }}
+            style={{ borderRadius: 'var(--brand-radius)' }}
           >
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <div 
+                <div
                   className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: brandConfig.primaryColor }}
+                  style={{ backgroundColor: 'var(--brand-primary)' }}
                 />
                 <span>New user registered</span>
                 <span className="text-gray-500 text-sm">2 min ago</span>
               </div>
               <div className="flex items-center space-x-3">
-                <div 
+                <div
                   className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: brandConfig.accentColor }}
+                  style={{ backgroundColor: 'var(--brand-accent)' }}
                 />
                 <span>Order completed</span>
                 <span className="text-gray-500 text-sm">5 min ago</span>
@@ -209,20 +205,20 @@ const DashboardContent: React.FC = () => {
       </Row>
 
       {/* Data Table */}
-      <Card 
-        title="User Management" 
+      <Card
+        title="User Management"
         bordered={false}
         className="hover:shadow-lg transition-shadow duration-300"
-        style={{ borderRadius: brandConfig.borderRadius }}
+        style={{ borderRadius: 'var(--brand-radius)' }}
         extra={
-          <Button type="primary" style={{ background: brandConfig.primaryColor }}>
+          <Button type="primary" style={{ background: 'var(--brand-primary)' }}>
             Add User
           </Button>
         }
       >
-        <Table 
-          columns={columns} 
-          dataSource={tableData} 
+        <Table
+          columns={columns}
+          dataSource={tableData}
           pagination={false}
           className="custom-table"
         />

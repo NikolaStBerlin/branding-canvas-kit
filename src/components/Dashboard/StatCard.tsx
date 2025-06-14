@@ -2,7 +2,6 @@
 import React from 'react';
 import { Card, Statistic } from 'antd';
 import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
-import { useTheme } from '../../contexts/ThemeContext';
 
 interface StatCardProps {
   title: string;
@@ -23,12 +22,10 @@ const StatCard: React.FC<StatCardProps> = ({
   trendValue,
   color,
 }) => {
-  const { brandConfig } = useTheme();
-
   const getTrendColor = () => {
     if (trend === 'up') return '#52c41a';
     if (trend === 'down') return '#ff4d4f';
-    return brandConfig.textColor;
+    return 'var(--brand-text)';
   };
 
   const getTrendIcon = () => {
@@ -37,14 +34,19 @@ const StatCard: React.FC<StatCardProps> = ({
     return null;
   };
 
+  // Note color is still provided for specific status, but falls back to CSS var
+  const cardMainColor = color || 'var(--brand-primary)';
+  const cardAccentColor = color || 'var(--brand-accent)';
+  const statValueColor = color || 'var(--brand-primary)';
+
   return (
     <Card
       bordered={false}
       className="hover:shadow-lg transition-shadow duration-300"
       style={{
-        background: `linear-gradient(135deg, ${color || brandConfig.primaryColor}15 0%, ${color || brandConfig.accentColor}15 100%)`,
-        borderRadius: brandConfig.borderRadius,
-        border: `1px solid ${brandConfig.secondaryColor}`,
+        background: `linear-gradient(135deg, ${cardMainColor}15 0%, ${cardAccentColor}15 100%)`,
+        borderRadius: 'var(--brand-radius)',
+        border: '1px solid var(--brand-secondary)',
       }}
     >
       <Statistic
@@ -53,13 +55,13 @@ const StatCard: React.FC<StatCardProps> = ({
         prefix={prefix}
         suffix={suffix}
         valueStyle={{
-          color: color || brandConfig.primaryColor,
-          fontFamily: brandConfig.fontFamily,
+          color: statValueColor,
+          fontFamily: 'var(--brand-font)',
           fontWeight: 'bold',
         }}
       />
       {trend && trendValue && (
-        <div style={{ 
+        <div style={{
           color: getTrendColor(),
           fontSize: '14px',
           marginTop: '8px',
